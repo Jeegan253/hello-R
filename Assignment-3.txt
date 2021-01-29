@@ -41,12 +41,6 @@ ABC_political_poll_results CBS_political_poll_results
 [1] 15
 > median(Poll_results.df$CBS_political_poll_results)
 [1] 19
-> x<-var (Poll_results.df$ABC_political_poll_results) 
-> y<-var (Poll_results.df$CBS_political_poll_results)
-> sqrt(x)
-[1] 23.26248
-> sqrt(y)
-[1] 24.57932
 > ABC<-summary(Poll_results.df$ABC_political_poll_results)
 > CBS<-summary(Poll_results.df$CBS_political_poll_results)
 > ABC
@@ -55,4 +49,8 @@ ABC_political_poll_results CBS_political_poll_results
 > CBS
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    1.00   15.50   19.00   27.14   32.00   75.00 
+> sd(Poll_results.df$ABC_political_poll_results)
+[1] 23.26248
+> sd(Poll_results.df$CBS_political_poll_results)
+[1] 24.57932
 > 
