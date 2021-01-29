@@ -7,10 +7,11 @@ Poll_results.df <- data.frame (Name, ABC_political_poll_results, CBS_political_p
 Poll_results.df
 mean(Poll_results)
 mean(Poll_results.df)
-colMeans(Poll_results [,2:3])
+colMeans(Poll_results [,2:3]) 
 colMeans(Poll_results.df [,2:3])
-median (Poll_results.df$ABC_political_poll_results) 
-median(Poll_results.df$CBS_political_poll_results)
+colMeans (as.data.frame(Poll_results.df) [,2:3]) 
+#colmeans function has error in calculating column means with matrix due to presence of character variable
+#so using as.data.frame to convert matrix to data frame
 ABC<-summary(Poll_results.df$ABC_political_poll_results)
 CBS<-summary(Poll_results.df$CBS_political_poll_results)
 ABC
