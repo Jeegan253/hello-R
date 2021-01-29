@@ -1,0 +1,22 @@
+Name<- c("Jeb", "Donald", "Ted", "MArco", "Carly", "Hillary", "Bernie")
+ABC_political_poll_results <- c(4, 62, 51, 21, 2, 14, 15)
+CBS_political_poll_results<- c(12, 75, 43, 19,1, 21, 19)
+Poll_results <- cbind (Name, ABC_political_poll_results, CBS_political_poll_results) 
+Poll_results
+Poll_results.df <- data.frame (Name, ABC_political_poll_results, CBS_political_poll_results)
+Poll_results.df
+mean(Poll_results)
+mean(Poll_results.df)
+colMeans(Poll_results [,2:3])
+colMeans(Poll_results.df [,2:3])
+median (Poll_results.df$ABC_political_poll_results) 
+median(Poll_results.df$CBS_political_poll_results)
+x<-var (Poll_results.df$ABC_political_poll_results) 
+y<-var (Poll_results.df$CBS_political_poll_results)
+sqrt(x)
+sqrt(y)
+ABC<-summary(Poll_results.df$ABC_political_poll_results)
+CBS<-summary(Poll_results.df$CBS_political_poll_results)
+ABC
+CBS
+
