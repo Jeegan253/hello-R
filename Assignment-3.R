@@ -11,12 +11,10 @@ colMeans(Poll_results [,2:3])
 colMeans(Poll_results.df [,2:3])
 median (Poll_results.df$ABC_political_poll_results) 
 median(Poll_results.df$CBS_political_poll_results)
-x<-var (Poll_results.df$ABC_political_poll_results) 
-y<-var (Poll_results.df$CBS_political_poll_results)
-sqrt(x)
-sqrt(y)
 ABC<-summary(Poll_results.df$ABC_political_poll_results)
 CBS<-summary(Poll_results.df$CBS_political_poll_results)
 ABC
 CBS
+sd(Poll_results.df$ABC_political_poll_results)
+sd(Poll_results.df$CBS_political_poll_results)
 
