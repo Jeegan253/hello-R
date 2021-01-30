@@ -1,0 +1,59 @@
+> Name<- c("Jeb", "Donald", "Ted", "MArco", "Carly", "Hillary", "Bernie")
+> ABC_political_poll_results <- c(4, 62, 51, 21, 2, 14, 15)
+> CBS_political_poll_results<- c(12, 75, 43, 19,1, 21, 19)
+> Poll_results <- cbind (Name, ABC_political_poll_results, CBS_political_poll_results) 
+> Poll_results
+     Name      ABC_political_poll_results CBS_political_poll_results
+[1,] "Jeb"     "4"                        "12"                      
+[2,] "Donald"  "62"                       "75"                      
+[3,] "Ted"     "51"                       "43"                      
+[4,] "MArco"   "21"                       "19"                      
+[5,] "Carly"   "2"                        "1"                       
+[6,] "Hillary" "14"                       "21"                      
+[7,] "Bernie"  "15"                       "19"                      
+> Poll_results.df <- data.frame (Name, ABC_political_poll_results, CBS_political_poll_results)
+> Poll_results.df
+     Name ABC_political_poll_results CBS_political_poll_results
+1     Jeb                          4                         12
+2  Donald                         62                         75
+3     Ted                         51                         43
+4   MArco                         21                         19
+5   Carly                          2                          1
+6 Hillary                         14                         21
+7  Bernie                         15                         19
+> mean(Poll_results)
+[1] NA
+Warning message:
+In mean.default(Poll_results) :
+  argument is not numeric or logical: returning NA
+> mean(Poll_results.df)
+[1] NA
+Warning message:
+In mean.default(Poll_results.df) :
+  argument is not numeric or logical: returning NA
+> #Both the mean function resulted in warning message: of argument is not numeric
+> #or logical
+> colMeans(Poll_results [,2:3]) 
+Error in colMeans(Poll_results[, 2:3]) : 'x' must be numeric
+> colMeans(Poll_results.df [,2:3])
+ABC_political_poll_results CBS_political_poll_results 
+                  24.14286                   27.14286 
+> #colMeans functions work with only dataframe but not with matrix
+> ABC<-summary(Poll_results.df$ABC_political_poll_results)
+> CBS<-summary(Poll_results.df$CBS_political_poll_results)
+> ABC
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2.00    9.00   15.00   24.14   36.00   62.00 
+> CBS
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00   15.50   19.00   27.14   32.00   75.00 
+> sd(Poll_results.df$ABC_political_poll_results)
+[1] 23.26248
+> sd(Poll_results.df$CBS_political_poll_results)
+[1] 24.57932
+> summary(Poll_results)
+     Name           ABC_political_poll_results CBS_political_poll_results
+ Length:7           Length:7                   Length:7                  
+ Class :character   Class :character           Class :character          
+ Mode  :character   Mode  :character           Mode  :character          
+> 
