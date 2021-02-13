@@ -36,3 +36,6 @@ z
 W <-z%*%Z    #multiplying matrices z and Z
 det(W) #determinant of W
 solve(W) #inverse of W
+
+x%*%solve(x)
+solve(W) %*% W
