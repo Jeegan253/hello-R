@@ -34,5 +34,5 @@ z<- matrix(Y, ncol=5) #matrix of Y with 5 columns
 Z
 z
 W <-z%*%Z    #multiplying matrices z and Z
-det(W)
-solve(W)
+det(W) #determinant of W
+solve(W) #inverse of W
