@@ -11,6 +11,7 @@ R1b
 C<- c(4,1,2,3)
 R2<- diag(C)
 R2
+diag(R2)
 #Question-3
 R3a<- diag(3,5)
 R3a
