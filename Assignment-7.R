@@ -32,3 +32,7 @@ typeof(B)
 otype(B)
 show(B)   #S4 generic function 
 print(B)  #s3 generic function giving error. 
+oesoph$ncases
+oesoph$ncontrols
+B@ncases
+B@ncontrols
