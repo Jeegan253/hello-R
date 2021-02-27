@@ -185,7 +185,48 @@ $class
 +   cat("tobacco group", oesoph$tobgp, "\n")
 +   cat("cases", oesoph$ncases, "\n")
 +   cat("controls", oesoph$ncontrols, "\n")}
-> otype(oesoph)                                             #type of object
+> otype(oesoph)#type of object
+[1] "S3"
+> oesoph #using new function print.eso
+age group 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 6 
+alcohol group 1 1 1 1 2 2 2 2 3 3 3 4 4 4 4 1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4 1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4 1 1 1 1 2 2 2 3 3 3 3 4 4 4 4 1 1 1 2 2 2 2 3 3 4 4 
+tobacco group 1 2 3 4 1 2 3 4 1 2 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 1 2 3 4 1 2 3 4 1 2 4 1 2 3 4 1 2 1 2 
+cases 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 3 1 0 0 0 0 0 2 0 2 1 0 0 0 6 4 5 5 3 6 1 2 4 3 2 4 2 3 3 4 9 6 4 3 9 8 3 4 5 6 2 5 5 4 2 0 17 3 5 6 4 2 1 3 1 1 1 1 2 1 2 1 0 1 1 1 2 1 
+controls 40 10 6 5 27 7 4 7 2 1 2 1 1 1 2 60 14 7 8 35 23 14 8 11 6 2 1 3 3 4 46 18 10 4 38 21 15 7 16 14 5 4 4 4 3 4 49 22 12 6 40 21 17 6 18 15 6 4 10 7 3 6 48 14 7 2 34 10 9 13 12 3 1 4 2 1 1 18 6 3 5 3 3 1 1 1 2 1 
+> linear<- lm(esoph$ncases~esoph$agegp+esoph$alcgp+esoph$tobgp) #A s3 function linear regression on S3 object
+> summary(linear)
+
+Call:
+lm(formula = esoph$ncases ~ esoph$agegp + esoph$alcgp + esoph$tobgp)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-2.970 -1.100 -0.052  0.933 10.939 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     2.0974     0.2120   9.895 2.62e-15 ***
+esoph$agegp.L   1.7735     0.5392   3.289 0.001523 ** 
+esoph$agegp.Q  -3.3999     0.5323  -6.387 1.22e-08 ***
+esoph$agegp.C  -1.9515     0.5176  -3.770 0.000321 ***
+esoph$agegp^4   0.6120     0.5058   1.210 0.230023    
+esoph$agegp^5   0.2281     0.4931   0.463 0.644927    
+esoph$alcgp.L   0.1780     0.4194   0.424 0.672439    
+esoph$alcgp.Q  -1.1951     0.4182  -2.858 0.005502 ** 
+esoph$alcgp.C   0.9649     0.4203   2.296 0.024438 *  
+esoph$tobgp.L  -1.4647     0.4223  -3.469 0.000865 ***
+esoph$tobgp.Q   0.5020     0.4203   1.194 0.236049    
+esoph$tobgp.C   0.3619     0.4219   0.858 0.393779    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.956 on 76 degrees of freedom
+Multiple R-squared:  0.559,	Adjusted R-squared:  0.4951 
+F-statistic: 8.756 on 11 and 76 DF,  p-value: 8.316e-10
+
+> class(linear)
+[1] "lm"
+> otype(linear)
 [1] "S3"
 > esop<- list(agegp= 1, alcgp=2, tobgp=4, ncases=4, ncontrols=5)
 > class(esop)<- "eso"              #assigning S3 to esop dataset
@@ -197,7 +238,7 @@ $class
 > B<- A(esoph)
 > isS4(B)
 [1] TRUE
-> show(B)
+> show(B)   #S4 generic function 
 An object of class "eso"
 Slot "agegp":
  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 4 4
@@ -221,5 +262,5 @@ Slot "ncontrols":
 [40] 14  5  4  4  4  3  4 49 22 12  6 40 21 17  6 18 15  6  4 10  7  3  6 48 14  7  2 34 10  9 13 12  3  1  4  2  1  1 18
 [79]  6  3  5  3  3  1  1  1  2  1
 
-> print(B)
- Error in oesoph$agegp : $ operator not defined for this S4 class 
+> print(B)  #s3 generic function giving error. 
+ Error: $ operator not defined for this S4 class 

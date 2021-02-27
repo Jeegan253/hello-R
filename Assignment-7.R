@@ -12,7 +12,12 @@ print.eso<- function(oesoph) {cat("age group",oesoph$agegp, "\n") #assigning S3 
   cat("tobacco group", oesoph$tobgp, "\n")
   cat("cases", oesoph$ncases, "\n")
   cat("controls", oesoph$ncontrols, "\n")}
-otype(oesoph)                                             #type of object
+otype(oesoph)#type of object
+oesoph #using new function print.eso
+linear<- lm(esoph$ncases~esoph$agegp+esoph$alcgp+esoph$tobgp) #A s3 function linear regression on S3 object
+summary(linear)
+class(linear)
+otype(linear)
 esop<- list(agegp= 1, alcgp=2, tobgp=4, ncases=4, ncontrols=5)
 class(esop)<- "eso"              #assigning S3 to esop dataset
 otype(esop)  
