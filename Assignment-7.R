@@ -1,8 +1,10 @@
 library(datasets)  # loading dataset
 install.packages("pryr") #installing and loading pryr package
 library(pryr)
+typeof(esoph)
 esoph 
 otype(esoph)   #type of object of dataset esoph
+isS4(esoph)
 oesoph<-unclass(esoph)  #unclass esoph
 oesoph
 class(oesoph)<- "eso"
@@ -26,5 +28,7 @@ A<- function(x) {setClass("eso", representation(agegp="numeric", alcgp="numeric"
   new("eso", agegp=esoph$agegp, alcgp=esoph$alcgp, tobgp=esoph$tobgp, ncases=esoph$ncases, ncontrols=esoph$ncontrols)}
 B<- A(esoph)
 isS4(B)
+typeof(B)
+otype(B)
 show(B)   #S4 generic function 
 print(B)  #s3 generic function giving error. 

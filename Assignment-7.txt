@@ -1,3 +1,4 @@
+
 > library(datasets)  # loading dataset
 > install.packages("pryr") #installing and loading pryr package
 WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
@@ -10,15 +11,9 @@ Content type 'application/zip' length 935778 bytes (913 KB)
 downloaded 913 KB
 
 package ‘pryr’ successfully unpacked and MD5 sums checked
-Warning in install.packages :
-  cannot remove prior installation of package ‘pryr’
-Warning in install.packages :
-  problem copying C:\Users\jeegs\OneDrive\Documents\R\win-library\4.0\00LOCK\pryr\libs\x64\pryr.dll to C:\Users\jeegs\OneDrive\Documents\R\win-library\4.0\pryr\libs\x64\pryr.dll: Permission denied
-Warning in install.packages :
-  restored ‘pryr’
 
 The downloaded binary packages are in
-	C:\Users\jeegs\AppData\Local\Temp\RtmpKYfQId\downloaded_packages
+	C:\Users\jeegs\AppData\Local\Temp\RtmpwBmZE1\downloaded_packages
 > library(pryr)
 Registered S3 method overwritten by 'pryr':
   method      from
@@ -30,6 +25,8 @@ The following object is masked _by_ ‘.GlobalEnv’:
 
     f
 
+> typeof(esoph)
+[1] "list"
 > esoph 
    agegp     alcgp    tobgp ncases ncontrols
 1  25-34 0-39g/day 0-9g/day      0        40
@@ -122,6 +119,8 @@ The following object is masked _by_ ‘.GlobalEnv’:
 88   75+      120+    10-19      1         1
 > otype(esoph)   #type of object of dataset esoph
 [1] "S3"
+> isS4(esoph)
+[1] FALSE
 > oesoph<-unclass(esoph)  #unclass esoph
 > oesoph
 $agegp
@@ -238,6 +237,10 @@ F-statistic: 8.756 on 11 and 76 DF,  p-value: 8.316e-10
 > B<- A(esoph)
 > isS4(B)
 [1] TRUE
+> typeof(B)
+[1] "S4"
+> otype(B)
+[1] "S4"
 > show(B)   #S4 generic function 
 An object of class "eso"
 Slot "agegp":
