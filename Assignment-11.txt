@@ -1,0 +1,254 @@
+> tukey_multiple <- function(x) {
++   outliers <- array(TRUE,dim=dim(x))
++   for (j in 1:ncol(x))
++   {
++     outliers[,j] <- outliers[,j] && tukey.outlier (x[,j])
++   }
++   outlier.vec <- vector(length=nrow(x))
++   for (i in 1:nrow(x))
++   { outlier.vec[i] <- all(outliers[i]) } return (outlier.vec)}  #changed line
+Error: unexpected symbol in:
+"  for (i in 1:nrow(x))
+  { outlier.vec[i] <- all(outliers[i]) } return"
+> tukey_multiple <- function(x) {
++   outliers <- array(TRUE,dim=dim(x))
++   for (j in 1:ncol(x))
++   {
++     outliers[,j] <- outliers[,j] && tukey.outlier (x[,j])
++   }
++   outlier.vec <- vector(length=nrow(x))
++   for (i in 1:nrow(x))
++   { outlier.vec[i] <- all(outliers[i]) } 
++   return (outlier.vec)}  #changed line
+> debug(tukey_multiple)
+> y<- as.matrix(1:100, nrow=5) #matrix for testing
+> tukey_multiple(y)
+debugging in: tukey_multiple(y)
+debug at #1: {
+    outliers <- array(TRUE, dim = dim(x))
+    for (j in 1:ncol(x)) {
+        outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+    }
+    outlier.vec <- vector(length = nrow(x))
+    for (i in 1:nrow(x)) {
+        outlier.vec[i] <- all(outliers[i])
+    }
+    return(outlier.vec)
+}
+Browse[2]> n
+debug at #2: outliers <- array(TRUE, dim = dim(x))
+Browse[2]> n
+debug at #3: for (j in 1:ncol(x)) {
+    outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+}
+Browse[2]> n
+debug at #5: outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+Browse[2]> n
+Error in tukey.outlier(x[, j]) : could not find function "tukey.outlier"
+> undebug(tukey_multiple)
+> quartiles <- function (a) 
++ {
++   Q1<- quantile(a,0.25,names=FALSE)
++   Q3<- quantile (a, 0.75, names=FALSE)
++   quartiles <- c(First=Q1, Third= Q3, IQR = Q3-Q1)
++   return (quartiles)
++ }
+> tukey.outlier <- function (b)
++ {
++   quartiles <- quartiles (b)
++   Belowthreshold <- quartiles[1]-1.5*quartiles[3]
++   Upperthreshold <- quartiles [2] + 1.5*quartiles[3] 
++   Outliers <- ((b<Belowthreshold)| (b> Upperthreshold))
++   return(Outliers)
++ }
+> debug(quartiles) #debugging for quartile function
+> quartiles(y)
+debugging in: quartiles(y)
+debug at #1: {
+    Q1 <- quantile(a, 0.25, names = FALSE)
+    Q3 <- quantile(a, 0.75, names = FALSE)
+    quartiles <- c(First = Q1, Third = Q3, IQR = Q3 - Q1)
+    return(quartiles)
+}
+Browse[2]> undebug(quartiles)
+Browse[2]> n
+debug at #3: Q1 <- quantile(a, 0.25, names = FALSE)
+Browse[2]> n
+debug at #4: Q3 <- quantile(a, 0.75, names = FALSE)
+Browse[2]> n
+debug at #5: quartiles <- c(First = Q1, Third = Q3, IQR = Q3 - Q1)
+Browse[2]> n
+debug at #6: return(quartiles)
+Browse[2]> n
+exiting from: quartiles(y)
+First Third   IQR 
+25.75 75.25 49.50 
+> undebug(quartiles)
+Warning message:
+In undebug(quartiles) : argument is not being debugged
+> debug(tukey.outlier) #debugging for tukey.outlier function
+> tukey.outlier(y)
+debugging in: tukey.outlier(y)
+debug at #1: {
+    quartiles <- quartiles(b)
+    Belowthreshold <- quartiles[1] - 1.5 * quartiles[3]
+    Upperthreshold <- quartiles[2] + 1.5 * quartiles[3]
+    Outliers <- ((b < Belowthreshold) | (b > Upperthreshold))
+    return(Outliers)
+}
+Browse[2]> n
+debug at #3: quartiles <- quartiles(b)
+Browse[2]> n
+debug at #4: Belowthreshold <- quartiles[1] - 1.5 * quartiles[3]
+Browse[2]> n
+debug at #5: Upperthreshold <- quartiles[2] + 1.5 * quartiles[3]
+Browse[2]> n
+debug at #6: Outliers <- ((b < Belowthreshold) | (b > Upperthreshold))
+Browse[2]> n
+debug at #7: return(Outliers)
+Browse[2]> n
+exiting from: tukey.outlier(y)
+        [,1]
+  [1,] FALSE
+  [2,] FALSE
+  [3,] FALSE
+  [4,] FALSE
+  [5,] FALSE
+  [6,] FALSE
+  [7,] FALSE
+  [8,] FALSE
+  [9,] FALSE
+ [10,] FALSE
+ [11,] FALSE
+ [12,] FALSE
+ [13,] FALSE
+ [14,] FALSE
+ [15,] FALSE
+ [16,] FALSE
+ [17,] FALSE
+ [18,] FALSE
+ [19,] FALSE
+ [20,] FALSE
+ [21,] FALSE
+ [22,] FALSE
+ [23,] FALSE
+ [24,] FALSE
+ [25,] FALSE
+ [26,] FALSE
+ [27,] FALSE
+ [28,] FALSE
+ [29,] FALSE
+ [30,] FALSE
+ [31,] FALSE
+ [32,] FALSE
+ [33,] FALSE
+ [34,] FALSE
+ [35,] FALSE
+ [36,] FALSE
+ [37,] FALSE
+ [38,] FALSE
+ [39,] FALSE
+ [40,] FALSE
+ [41,] FALSE
+ [42,] FALSE
+ [43,] FALSE
+ [44,] FALSE
+ [45,] FALSE
+ [46,] FALSE
+ [47,] FALSE
+ [48,] FALSE
+ [49,] FALSE
+ [50,] FALSE
+ [51,] FALSE
+ [52,] FALSE
+ [53,] FALSE
+ [54,] FALSE
+ [55,] FALSE
+ [56,] FALSE
+ [57,] FALSE
+ [58,] FALSE
+ [59,] FALSE
+ [60,] FALSE
+ [61,] FALSE
+ [62,] FALSE
+ [63,] FALSE
+ [64,] FALSE
+ [65,] FALSE
+ [66,] FALSE
+ [67,] FALSE
+ [68,] FALSE
+ [69,] FALSE
+ [70,] FALSE
+ [71,] FALSE
+ [72,] FALSE
+ [73,] FALSE
+ [74,] FALSE
+ [75,] FALSE
+ [76,] FALSE
+ [77,] FALSE
+ [78,] FALSE
+ [79,] FALSE
+ [80,] FALSE
+ [81,] FALSE
+ [82,] FALSE
+ [83,] FALSE
+ [84,] FALSE
+ [85,] FALSE
+ [86,] FALSE
+ [87,] FALSE
+ [88,] FALSE
+ [89,] FALSE
+ [90,] FALSE
+ [91,] FALSE
+ [92,] FALSE
+ [93,] FALSE
+ [94,] FALSE
+ [95,] FALSE
+ [96,] FALSE
+ [97,] FALSE
+ [98,] FALSE
+ [99,] FALSE
+[100,] FALSE
+> undebug(tukey.outlier)
+> debug(tukey_multiple)
+> tukey_multiple(y)
+debugging in: tukey_multiple(y)
+debug at #1: {
+    outliers <- array(TRUE, dim = dim(x))
+    for (j in 1:ncol(x)) {
+        outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+    }
+    outlier.vec <- vector(length = nrow(x))
+    for (i in 1:nrow(x)) {
+        outlier.vec[i] <- all(outliers[i])
+    }
+    return(outlier.vec)
+}
+Browse[2]> n
+debug at #2: outliers <- array(TRUE, dim = dim(x))
+Browse[2]> n
+debug at #3: for (j in 1:ncol(x)) {
+    outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+}
+Browse[2]> n
+debug at #5: outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+Browse[2]> n
+debug at #7: outlier.vec <- vector(length = nrow(x))
+Browse[2]> n
+debug at #8: for (i in 1:nrow(x)) {
+    outlier.vec[i] <- all(outliers[i])
+}
+Browse[2]> n
+debug at #9: outlier.vec[i] <- all(outliers[i])
+Browse[2]> c
+debug at #10: return(outlier.vec)
+Browse[2]> n
+exiting from: tukey_multiple(y)
+  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [20] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [39] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [58] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [77] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [96] FALSE FALSE FALSE FALSE FALSE
+> undebug(tukey_multiple)
+> 
