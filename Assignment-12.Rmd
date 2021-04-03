@@ -1,0 +1,49 @@
+---
+title: "Inferity and Abortion"
+author: "Jeegan Parikh"
+date: "4/3/2021"
+output: html_document
+---
+# **_Association between Infertility and Abortion_**
+
+```{r echo = FALSE}
+library(aod)
+infer<-infert
+infer$infert<-as.factor(infer$case)
+infer$par<-as.factor(infer$parity)
+infer$induab<-as.factor(infer$induced)
+infer$sponab<-as.factor(infer$spontaneous)
+summary(infer)
+```
+
+## *Plots*
+
+```{r echo=FALSE}
+counts1 <- table(infer$induab, infer$infert)
+barplot(counts1, main= "Infertility in Induced abortion" 
+        ,xlab ="Infertility", col=c("light green", "light yellow","light blue"), 
+        legend=rownames(counts1))
+counts2 <- table(infer$sponab, infer$infert)
+barplot(counts2, main= "Infertility in Spontaneous abortion" 
+        ,xlab ="Infertility", col=c("light green", "light yellow","light blue"), 
+        legend=rownames(counts2))
+```
+
+#### **Note:**0 and 1 on X-Axis represent Absence or Presence of Infertility respectively
+           
+#### 0, 1, and 2 in legend represent the number of Induced or Spontaneous abortions
+
+## *Test for Association*
+
+```{r echo=FALSE}
+logmodel <- glm(infert ~ age + education + par + induab + sponab,data=infer, family="binomial")
+summary(logmodel)
+wald.test(b=coef(logmodel), Sigma= vcov(logmodel), Terms=4:6)
+```
+## *Odds Ratio*
+```{r echo=FALSE}
+oddsratio<-exp(cbind(OR=coef(logmodel), confint(logmodel)))
+oddsratio
+```
+
+### **Spontaneous and induced abortion increases the risk of infertlity**
