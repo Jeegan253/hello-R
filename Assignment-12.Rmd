@@ -1,8 +1,10 @@
 ---
-title: "Inferity and Abortion"
+title: "Infertility and Abortion"
 author: "Jeegan Parikh"
 date: "4/3/2021"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 # **_Association between Infertility and Abortion_**
 
@@ -46,4 +48,4 @@ oddsratio<-exp(cbind(OR=coef(logmodel), confint(logmodel)))
 oddsratio
 ```
 
-### **Spontaneous and induced abortion increases the risk of infertlity**
+### **Spontaneous and induced abortion increases the risk of infertility**
