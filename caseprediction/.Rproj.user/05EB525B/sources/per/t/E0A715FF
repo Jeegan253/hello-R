@@ -1,0 +1,24 @@
+{
+    "id": "E0A715FF",
+    "path": "~/GitHub/hello-R/caseprediction/R/Pertusscase.R",
+    "project_path": "R/Pertusscase.R",
+    "type": "r_source",
+    "hash": "3565214990",
+    "contents": "",
+    "dirty": false,
+    "created": 1618844408472.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "11,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1618844390,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1618844390,
+    "read_only": false,
+    "read_only_alternatives": []
+}
