@@ -1,5 +1,5 @@
 Package: caseprediction
-Title: Predicts the number of case based on vaccination coverage
+Title: Predicts the number of case based on DTaP3 and DTaP4 vaccination coverage
 Version: 0.0.0.9
 Authors@R: Jeegan Parikh <jeeganparikh@mail.usf.edu>
 Maintainer: Jeegan Parikh <jeeganparikh@mail.usf.edu> 
