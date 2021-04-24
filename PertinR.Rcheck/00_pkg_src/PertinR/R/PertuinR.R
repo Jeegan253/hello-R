@@ -9,16 +9,18 @@
 #' The results of the regression model was used to create the prediction model
 #' for expected number of cases based on the vaccination coverage
 #'
+#'
+#'
 #' @param x is DTap-3 coverage
 #' @param y is DTap-4 coverage
 #' @return the number of predicted cases from model
 #' @examples
-#' Exp_case(96,85)
-#' Exp_case (97,86)
-#' Exp_case(coverage$x,coverage$y)
+#' Expe_case(96,85)
+#' Expe_case (97,86)
+#' Expe_case(coverage$x,coverage$y)
 #'
 #' @export
-Exp_case <- function(x,y) {
+Expe_case <- function(x,y) {
   cases <- (277288.7 -(5988.2*x) + (3710.9*y))
   return(cases)
 }
